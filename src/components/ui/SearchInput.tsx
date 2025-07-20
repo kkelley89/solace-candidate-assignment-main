@@ -7,6 +7,7 @@ interface SearchInputProps {
   value: string;
   placeholder?: string;
   className?: string;
+  disabled?: boolean;
 }
 
 export const SearchInput: React.FC<SearchInputProps> = ({
@@ -14,6 +15,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   value,
   placeholder = 'Search...',
   className = '',
+  disabled = false,
 }) => {
   return (
     <input
@@ -21,6 +23,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
       onChange={onChange}
       value={value}
       placeholder={placeholder}
+      disabled={disabled}
     />
   );
 };
