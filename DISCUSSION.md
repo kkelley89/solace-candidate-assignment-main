@@ -94,15 +94,33 @@ I'll put some notes in the PR as well, but here's the thinking:
 - Proper HTTP headers with Content-Type
 - Request validation and sanitization
 
-🎯 User Experience Benefits:  
+User Experience Benefits:  
 Performance: No more lag with large datasets  
 Feedback: Users see loading states and search progress  
 Responsiveness: Debouncing prevents excessive API calls  
 Accessibility: Disabled state during loading prevents confusion  
 Error Recovery: Clear error messages when search fails
 
-🏗️ Architecture Benefits:  
+Architecture Benefits:  
 Scalability: Server-side search scales to hundreds of thousands of records  
 Separation of Concerns: Search logic moved to API layer  
 Reusability: SearchInput component can be used throughout the app  
 Maintainability: Clean component interfaces and proper state management
+
+## TODOs
+
+I'll call that a wrap. I hit a snag with Drizzle syntax when trying to set up proper SQL filtering rather than in memory. We're at a good place for discussion from a next-steps and higher-order architecture perspective now, I think.
+
+That's about the "2 hour" mark if I toss out the initial MSFT woes.
+
+I'll toss this section in the assignment notes since I know this is running a bit long.
+
+We took a reasonably defined POC and made some updates that could potentially prep it for production at scale:
+
+- Removed the all-in-one data fetch
+- Added some reasonable front-end updates in terms of design and function (debounced search, for instance)
+- Added some reasonable patterns (tailwind @apply directives, reusable components, proper use of state, debouncing, etc)
+
+I cobbled together some next-steps and general conversation pieces for "what might we do next?" if you'd like to keep the conversation rolling. Fun exercise!
+
+Cheers
