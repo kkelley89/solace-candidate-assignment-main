@@ -55,3 +55,54 @@ I'll put some notes in the PR as well, but here's the thinking:
 - Bring the correct type of event into our `onChange` (HTMLInputElement)
 - Component creation:
   - In the spirit of best practices, created some re-usable components for further maintainability and flexibility, a searchInput and a button
+
+## Second PR - API interactions
+
+1. Error Handling
+
+- Try/catch blocks around all database operations
+- Proper HTTP status codes (500 for errors, 200 for success)
+- Development vs Production error messages (more of a TODO)
+- User-friendly error display in the UI
+
+2. Server-Side Search & Filtering
+
+- Query parameters: ?search=term&page=1&limit=50
+- Case-insensitive search across all relevant fields
+- Multi-field search: firstName, lastName, city, degree, specialties, yearsOfExperience
+- JSON field search for specialties array
+- Input validation with sanitization
+
+3. Pagination Support
+
+- Configurable page size (default 50, max 100)
+- Pagination metadata: total, totalPages, hasNext, hasPrevious
+- Offset-based pagination for database efficiency
+- Page bounds validation (minimum 1, maximum available)
+
+4. Performance Optimizations
+
+- Server-side filtering (no more client-side filtering of large datasets)
+- Debounced search (300ms delay to reduce API calls)
+- Loading states for better UX
+- Limit validation to prevent oversized responses
+
+5. API Design Improvements
+
+- RESTful query parameters instead of request body for GET
+- Consistent response format with data, pagination, and search fields
+- Proper HTTP headers with Content-Type
+- Request validation and sanitization
+
+🎯 User Experience Benefits:  
+Performance: No more lag with large datasets  
+Feedback: Users see loading states and search progress  
+Responsiveness: Debouncing prevents excessive API calls  
+Accessibility: Disabled state during loading prevents confusion  
+Error Recovery: Clear error messages when search fails
+
+🏗️ Architecture Benefits:  
+Scalability: Server-side search scales to hundreds of thousands of records  
+Separation of Concerns: Search logic moved to API layer  
+Reusability: SearchInput component can be used throughout the app  
+Maintainability: Clean component interfaces and proper state management
